@@ -971,8 +971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd95f7a436d94def8ff938b720e5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentTimelinePhase: {fileID: 11400000, guid: 7ddc8b105e2054cda98e397041106355,
-    type: 2}
   m_health: {fileID: 11400000, guid: e2f428e06c2d84e48b6ee614d4301805, type: 2}
   m_maxHealth: {fileID: 11400000, guid: 6077d054f1dbf493dae56d90ad66738c, type: 2}
   m_oponent: {fileID: 1952933645}
@@ -1168,6 +1166,7 @@ GameObject:
   - component: {fileID: 1560062829}
   - component: {fileID: 1560062828}
   - component: {fileID: 1560062827}
+  - component: {fileID: 1560062831}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1256,6 +1255,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1560062831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560062826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037edc60447474927a71ebc90be84ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerHealth: {fileID: 11400000, guid: a8a179ccab92e4a09991bb3b9732be2e, type: 2}
+  m_enemyHealth: {fileID: 11400000, guid: e2f428e06c2d84e48b6ee614d4301805, type: 2}
+  m_fadeInOut: {fileID: 1592709916}
 --- !u!1 &1592709912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,8 +1356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3941220a426149b2af57cf16be656ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentTimelinePhase: {fileID: 11400000, guid: 7ddc8b105e2054cda98e397041106355,
-    type: 2}
 --- !u!1 &1599167343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,8 +1629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd95f7a436d94def8ff938b720e5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentTimelinePhase: {fileID: 11400000, guid: 7ddc8b105e2054cda98e397041106355,
-    type: 2}
   m_health: {fileID: 11400000, guid: a8a179ccab92e4a09991bb3b9732be2e, type: 2}
   m_maxHealth: {fileID: 11400000, guid: 30ccf1560ac2f4652825fc4030bbaf7d, type: 2}
   m_oponent: {fileID: 1416759964}

@@ -11,6 +11,11 @@ namespace ld46.Components {
     ]
     public class Actor : MonoBehaviour
     {
+        public enum Type {
+            PLAYER,
+            ENEMY,
+        }
+
         public enum Stance {
             IDLE,
             ATTACKING,
