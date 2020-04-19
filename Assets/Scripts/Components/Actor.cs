@@ -16,6 +16,7 @@ namespace ld46.Components {
             BLOCKING,
             DODGING_LEFT,
             DODGING_RIGHT,
+            HIT,
             DEAD,
         }
 
@@ -50,6 +51,9 @@ namespace ld46.Components {
             if ( m_health.Value <= 0 ) {
                 m_animator.SetTrigger( "isDead" );     
                 this.enabled = false;
+            } 
+            else if ( this.GetStance() != Stance.HIT ) {
+                m_animator.SetTrigger( "isHit" );
             }
         }
 
@@ -110,6 +114,9 @@ namespace ld46.Components {
             }
             else if ( info.IsTag( "Dead" ) ) {
                 return Stance.DEAD;
+            }
+            else if ( info.IsTag( "Hit" ) ) {
+                return Stance.HIT;
             }
             return Stance.IDLE;
         }
