@@ -54,15 +54,16 @@ namespace ld46.UI {
                 return;
             }
 
-            StartCoroutine( FadeInImpl() );
+            StartCoroutine( "FadeInImpl" );
         }
 
         private IEnumerator FadeInImpl()
         {
             m_image.enabled = true;
-            for ( float i = 0; i <= 1.0f; i += 0.1f ) {
+            float dt = 0.01f;
+            for ( float i = 0; i <= 1.0f; i += dt ) {
                 m_image.color = new Color( 0.0f, 0.0f, 0.0f, 1.0f - i );
-                yield return new WaitForSecondsRealtime( 0.1f );
+                yield return new WaitForSecondsRealtime( dt );
             }
             m_image.enabled = false;
         }
@@ -75,16 +76,18 @@ namespace ld46.UI {
                 return;
             }
 
-            StartCoroutine( FadeOutImpl() );
+            StartCoroutine( "FadeOutImpl" );
         }
 
-        private IEnumerator FadeOutImpl( bool animated = true )
+        private IEnumerator FadeOutImpl()
         {
             m_image.enabled = true;
-            for ( float i = 0; i <= 1.0f; i += 0.1f ) {
+            float dt = 0.01f;
+            for ( float i = 0; i <= 1.0f; i += dt ) {
                 m_image.color = new Color(0.0f, 0.0f, 0.0f, i);
-                yield return new WaitForSecondsRealtime( 0.1f );
+                yield return new WaitForSecondsRealtime( dt );
             }
+            m_image.color = Color.black;
         }
 
     }
