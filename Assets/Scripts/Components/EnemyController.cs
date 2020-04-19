@@ -24,7 +24,6 @@ namespace ld46.Components {
         private IEnumerator DoSomething() 
         {
             int action = Random.Range( 0, 4 );
-            Debug.Log("Doing something" + action);
             switch ( action ) {
                 case 0:
                     m_animator.SetTrigger( "isAttackingLeft" );
