@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ld46.Data;
+using ld46.Components;
 
 namespace ld46.Components {
 
     [ 
         RequireComponent( typeof( Animator ) )
     ]
-    public class Actor : BaseComponent
+    public class Actor : MonoBehaviour
     {
         public enum Stance {
             IDLE,
@@ -20,6 +21,7 @@ namespace ld46.Components {
             DEAD,
         }
 
+        [ SerializeField ] protected IntValue m_currentTimelinePhase;
         [ SerializeField ] protected FloatValue m_health;
         [ SerializeField ] protected FloatValue m_maxHealth;
         [ SerializeField ] protected Actor m_oponent;
@@ -27,6 +29,8 @@ namespace ld46.Components {
         [ SerializeField ] protected bool m_canParry;
 
         private Animator m_animator;
+
+        public bool IsInCombat { get; private set; } = false;
 
         void Start()
         {
@@ -36,16 +40,14 @@ namespace ld46.Components {
 
         private void OnEnable() 
         {
-            if ( m_health != null ) {
-                m_health.OnValueChanged += this.OnHealthChanged;
-            }
+            if ( m_health != null ) m_health.OnValueChanged += this.OnHealthChanged;
+            if ( m_currentTimelinePhase != null ) m_currentTimelinePhase.OnValueChanged += this.OnTimelinePhaseChanged;
         }
 
         private void OnDisable() 
         {
-            if ( m_health != null ) {
-                m_health.OnValueChanged -= this.OnHealthChanged;
-            }
+            if ( m_health != null ) m_health.OnValueChanged -= this.OnHealthChanged;
+            if ( m_currentTimelinePhase != null ) m_currentTimelinePhase.OnValueChanged -= this.OnTimelinePhaseChanged;
         }
 
         private void OnHealthChanged( FloatValue value )
@@ -57,6 +59,12 @@ namespace ld46.Components {
             else if ( this.GetStance() != Stance.HIT ) {
                 m_animator.SetTrigger( "isHit" );
             }
+        }
+
+        private void OnTimelinePhaseChanged( IntValue _ )
+        {
+            IsInCombat = m_currentTimelinePhase.Value >= ( int ) Timeline.Phases.COMBAT_BEGIN 
+                && m_currentTimelinePhase.Value <= ( int ) Timeline.Phases.COMBAT_END;
         }
 
         public void OnHit( float damage )
