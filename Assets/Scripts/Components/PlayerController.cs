@@ -15,17 +15,15 @@ namespace ld46.Components {
         [ SerializeField ] protected IntValue m_currentTimelinePhase;
 
         private Animator m_animator;
-        private Actor m_actor;
 
         void Start()
         {
-            m_actor = GetComponent< Actor >();
             m_animator = GetComponent< Animator >();    
         }
 
         void Update() 
         {
-            if ( !m_actor.IsInCombat || Time.timeScale == 0.0f ) {
+            if ( Time.timeScale == 0.0f ) {
                 return;
             }
 

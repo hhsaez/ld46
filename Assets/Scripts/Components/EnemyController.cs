@@ -6,7 +6,6 @@ namespace ld46.Components {
 
     public class EnemyController : MonoBehaviour
     {
-        private Actor m_actor;
         private Animator m_animator;
         private List< string > m_attacks = new List< string >();
         private List< string > m_attackQueue = new List< string >();
@@ -14,7 +13,6 @@ namespace ld46.Components {
 
         private void Start()
         {
-            m_actor = GetComponent< Actor >();
             m_animator = GetComponent< Animator >();
 
             m_attacks = new List<string>() {
@@ -26,7 +24,7 @@ namespace ld46.Components {
 
         private void Update() 
         {
-            if ( !m_actor.IsInCombat ) {
+            if ( Time.timeScale == 0 ) {
                 return;
             }
 
