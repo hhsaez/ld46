@@ -22,6 +22,11 @@ namespace ld46.UI {
             }
         }
 
+        private void Start() 
+        {
+            this.Progress = 1.0f;
+        }
+
         private void OnEnable() 
         {
             if ( m_observedValue != null ) {

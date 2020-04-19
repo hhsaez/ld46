@@ -686,6 +686,8 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194230}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -758,6 +760,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -17.876001, y: -98.25001, z: -7.695}
+--- !u!95 &963194229
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 91cc905afbcc94d79952dae38e7ba899, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6020fcb48029041e4a42601c53312215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerHealth: {fileID: 11400000, guid: a8a179ccab92e4a09991bb3b9732be2e, type: 2}
+  m_enemyHealth: {fileID: 11400000, guid: e2f428e06c2d84e48b6ee614d4301805, type: 2}
+  m_enemyMaxHealth: {fileID: 11400000, guid: 6077d054f1dbf493dae56d90ad66738c, type: 2}
 --- !u!1 &1264626554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1068,8 @@ MonoBehaviour:
   m_health: {fileID: 11400000, guid: e2f428e06c2d84e48b6ee614d4301805, type: 2}
   m_maxHealth: {fileID: 11400000, guid: 6077d054f1dbf493dae56d90ad66738c, type: 2}
   m_oponent: {fileID: 1952933645}
+  m_canAutoblock: 1
+  m_canParry: 0
 --- !u!1 &1420103146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1622,8 @@ MonoBehaviour:
   m_health: {fileID: 11400000, guid: a8a179ccab92e4a09991bb3b9732be2e, type: 2}
   m_maxHealth: {fileID: 11400000, guid: 30ccf1560ac2f4652825fc4030bbaf7d, type: 2}
   m_oponent: {fileID: 1416759964}
+  m_canAutoblock: 0
+  m_canParry: 1
 --- !u!1001 &2138851392
 PrefabInstance:
   m_ObjectHideFlags: 0

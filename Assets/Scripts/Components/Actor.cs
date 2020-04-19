@@ -23,13 +23,15 @@ namespace ld46.Components {
         [ SerializeField ] protected FloatValue m_health;
         [ SerializeField ] protected FloatValue m_maxHealth;
         [ SerializeField ] protected Actor m_oponent;
+        [ SerializeField ] protected bool m_canAutoblock;
+        [ SerializeField ] protected bool m_canParry;
 
         private Animator m_animator;
 
         void Start()
         {
             m_animator = GetComponent< Animator >();
-            m_health.Value = m_maxHealth.Value;
+            m_health.Reset( m_maxHealth.Value, false );
         }
 
         private void OnEnable() 
@@ -59,6 +61,12 @@ namespace ld46.Components {
 
         public void OnHit( float damage )
         {
+            Stance stance = GetStance();
+            if ( m_canAutoblock && stance == Stance.IDLE ) {
+                m_animator.SetTrigger( "isBlocking" );
+                return;
+            }
+
             m_health.Value -= damage;
         }
 
@@ -70,12 +78,13 @@ namespace ld46.Components {
             Debug.Log( "Oponent: " + oponentStance );
 
             if ( oponentStance == Stance.DEAD ) {
-                Debug.Log("No damage");
+                Debug.Log("Target is dead");
                 return;
             }
 
             if ( oponentStance == Stance.BLOCKING ) {
-                Debug.Log("No damage");
+                m_animator.SetTrigger( "isHit" );
+                Debug.Log("Blocking. No damage");
                 return;
             }
             

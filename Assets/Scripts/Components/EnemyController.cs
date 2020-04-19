@@ -8,36 +8,30 @@ namespace ld46.Components {
     {
         private Animator m_animator;
 
+        private List<string> m_attacks = new List< string >();
+        private List<string> m_attackQueue = new List< string >();
+
         void Start()
         {
             m_animator = GetComponent< Animator >();
+
+            m_attacks = new List<string>() {
+                "isAttackingLeft",
+                "isAttackingRight",
+                "isAttackingCenter",
+            };
 
             StartCoroutine( DoSomething() );
         }
 
         private IEnumerator DoSomething() 
         {
-            int action = Random.Range( 0, 4 );
-            switch ( action ) {
-                case 0:
-                    m_animator.SetTrigger( "isAttackingLeft" );
-                    break;
-                case 1:
-                    m_animator.SetTrigger( "isAttackingRight" );
-                    break;
-                case 2:
-                    m_animator.SetTrigger( "isAttackingCenter" );
-                    break;
-                case 3:
-                    m_animator.SetBool( "isBlocking", true );
-                    yield return new WaitForSecondsRealtime( 1.0f );
-                    m_animator.SetBool( "isBlocking", false );
-                    break;
-                default:
-                    m_animator.SetTrigger( "isIdle" );
-                    break;
+            if ( m_attackQueue.Count == 0 ) {
+                m_attackQueue = new List< string >( m_attacks.Randomize() );
             }
-
+            string nextAttack = m_attackQueue[ 0 ];
+            m_attackQueue.RemoveAt( 0 );
+            m_animator.SetTrigger( nextAttack );
             yield return new WaitForSecondsRealtime( 3.0f );
             StartCoroutine( DoSomething() );
         }
