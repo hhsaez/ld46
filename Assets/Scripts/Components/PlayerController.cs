@@ -20,7 +20,7 @@ namespace ld46.Components {
         void Start()
         {
             m_actor = GetComponent< Actor >();
-            m_animator = GetComponent< Animator >();
+            m_animator = GetComponent< Animator >();    
         }
 
         void Update() 

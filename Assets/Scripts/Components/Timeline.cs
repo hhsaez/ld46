@@ -27,13 +27,17 @@ namespace ld46.Components {
 
         [ SerializeField ] protected IntValue m_currentTimelinePhase;
 
+        [ SerializeField ] protected GameObject m_gameUI;
+        [ SerializeField ] protected GameObject m_introUI;
+        [ SerializeField ] protected GameObject m_titleUI;        
+
         private void Start() 
         {
             m_currentTimelinePhase.Value = ( int ) Phases.START;
             NextPhase();
         }
 
-        private void NextPhase()
+        public void NextPhase()
         {
             StartCoroutine( "NextPhaseImpl" );
         }
@@ -44,8 +48,17 @@ namespace ld46.Components {
 
             Debug.Log("Next phase: " + ( Phases ) m_currentTimelinePhase.Value );
 
+            m_gameUI.gameObject.SetActive( false );
+            m_introUI.gameObject.SetActive( false );
+            m_titleUI.gameObject.SetActive( false );
+
             switch ( ( Phases ) m_currentTimelinePhase.Value ) {
                 case Phases.INTRO_BEGIN:
+                    m_introUI.gameObject.SetActive( true );
+                    yield return new WaitForSecondsRealtime( 1.0f );
+                    NextPhase();
+                    break;
+
                 case Phases.INTRO_END:
                     yield return new WaitForSecondsRealtime( 1.0f );
                     NextPhase();
@@ -55,16 +68,22 @@ namespace ld46.Components {
                 case Phases.INTRO_2:
                 case Phases.INTRO_3:
                 case Phases.INTRO_4:
+                    m_introUI.gameObject.SetActive( true );
                     yield return new WaitForSecondsRealtime( 3.0f );
                     NextPhase();
                     break;
 
-
                 case Phases.TITLE:
+                    m_titleUI.gameObject.SetActive( true );
                     while ( !Input.GetButton( "Fire1" ) ) {
                         yield return new WaitForSecondsRealtime( 0.1f );
                     }
+                    yield return new WaitForSecondsRealtime( 0.1f );
                     NextPhase();
+                    break;
+
+                case Phases.COMBAT_BEGIN:
+                    m_gameUI.gameObject.SetActive( true );
                     break;
 
                 default:
