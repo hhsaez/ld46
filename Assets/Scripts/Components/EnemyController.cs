@@ -6,13 +6,7 @@ namespace ld46.Components {
 
     public class EnemyController : BaseComponent
     {
-        [ SerializeField ] protected Animator m_animator;
-
-        private enum State {
-            IDLE,
-            BLOCKING,
-            ATTACKING,
-        }
+        private Animator m_animator;
 
         void Start()
         {
