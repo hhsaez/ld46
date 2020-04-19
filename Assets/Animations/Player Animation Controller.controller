@@ -98,7 +98,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -6088570964243376568, guid: 206357f5201404100b39ab025ae8285a,
     type: 3}
-  m_Tag: 
+  m_Tag: Dodging Left
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -167,7 +167,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -4431153110462104390, guid: 206357f5201404100b39ab025ae8285a,
     type: 3}
-  m_Tag: 
+  m_Tag: Dodging Right
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -371,7 +371,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -6801083763907307519, guid: 206357f5201404100b39ab025ae8285a,
     type: 3}
-  m_Tag: 
+  m_Tag: Blocking
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -452,7 +452,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -3100369314251171874, guid: 206357f5201404100b39ab025ae8285a,
     type: 3}
-  m_Tag: 
+  m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -479,7 +479,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 4348485665485846014, guid: 206357f5201404100b39ab025ae8285a,
     type: 3}
-  m_Tag: 
+  m_Tag: Dead
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -507,7 +507,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 8782069603097472493, guid: 206357f5201404100b39ab025ae8285a,
     type: 3}
-  m_Tag: 
+  m_Tag: Attacking
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

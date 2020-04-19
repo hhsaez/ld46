@@ -10,9 +10,18 @@ namespace ld46.Components {
     ]
     public class Actor : BaseComponent
     {
+        public enum Stance {
+            IDLE,
+            ATTACKING,
+            BLOCKING,
+            DODGING_LEFT,
+            DODGING_RIGHT,
+            DEAD,
+        }
+
         [ SerializeField ] protected FloatValue m_health;
         [ SerializeField ] protected FloatValue m_maxHealth;
-        [ SerializeField ] protected FloatValue m_oponentHealth;
+        [ SerializeField ] protected Actor m_oponent;
 
         private Animator m_animator;
 
@@ -44,9 +53,65 @@ namespace ld46.Components {
             }
         }
 
-        public void Attack( float damage )
+        public void OnHit( float damage )
         {
-            m_oponentHealth.Value -= damage;
+            m_health.Value -= damage;
+        }
+
+        public void Attack( AttackInfo attack )
+        {
+            Debug.Log("Direction " + attack.Direction + " damage " + attack.Damage);
+
+            Stance oponentStance = m_oponent.GetStance();
+            Debug.Log( "Oponent: " + oponentStance );
+
+            if ( oponentStance == Stance.DEAD ) {
+                Debug.Log("No damage");
+                return;
+            }
+
+            if ( oponentStance == Stance.BLOCKING ) {
+                Debug.Log("No damage");
+                return;
+            }
+            
+            if ( attack.Direction == AttackDirection.LEFT && oponentStance == Stance.DODGING_RIGHT ) {
+                Debug.Log("No damage");
+                return;
+            }
+
+            if ( attack.Direction == AttackDirection.RIGHT && oponentStance == Stance.DODGING_LEFT ) {
+                Debug.Log("No damage");
+                return;
+            }
+
+            if ( attack.Direction == AttackDirection.TOP && oponentStance != Stance.IDLE ) {
+                Debug.Log("No damage");
+                return;
+            }
+
+            m_oponent.OnHit( attack.Damage );
+        }
+
+        public Stance GetStance()
+        {
+            AnimatorStateInfo info = m_animator.GetCurrentAnimatorStateInfo(0);
+            if ( info.IsTag( "Attacking" ) ) {
+                return Stance.ATTACKING;
+            }
+            else if ( info.IsTag( "Dodging Left" ) ) {
+                return Stance.DODGING_LEFT;
+            }
+            else if ( info.IsTag( "Dodging Right" ) ) {
+                return Stance.DODGING_RIGHT;
+            }
+            else if ( info.IsTag( "Blocking" ) ) {
+                return Stance.BLOCKING;
+            }
+            else if ( info.IsTag( "Dead" ) ) {
+                return Stance.DEAD;
+            }
+            return Stance.IDLE;
         }
 
     }

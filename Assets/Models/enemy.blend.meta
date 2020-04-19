@@ -17,7 +17,7 @@ ModelImporter:
     second: Block
   - first:
       74: 4414905006446681567
-    second: Attack Center
+    second: Attack Top
   - first:
       74: 4348485665485846014
     second: Death
@@ -106,8 +106,9 @@ ModelImporter:
       - time: 0.7780449
         functionName: Attack
         data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 10
+        objectReferenceParameter: {fileID: 11400000, guid: 4cd726184a4b946d393cd7070ac5cbdf,
+          type: 2}
+        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []
@@ -142,8 +143,9 @@ ModelImporter:
       - time: 0.5865384
         functionName: Attack
         data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 20
+        objectReferenceParameter: {fileID: 11400000, guid: 3ba91216a7d054b45a031285f3f18502,
+          type: 2}
+        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []
@@ -180,7 +182,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Attack Center
+      name: Attack Top
       takeName: Scene
       internalID: 0
       firstFrame: 400
@@ -207,8 +209,9 @@ ModelImporter:
       - time: 0.57371795
         functionName: Attack
         data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 15
+        objectReferenceParameter: {fileID: 11400000, guid: 2ae15fc7aefc44300ba0dfd1f1d81ac0,
+          type: 2}
+        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []

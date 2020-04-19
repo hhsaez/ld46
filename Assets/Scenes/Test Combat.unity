@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_health: {fileID: 11400000, guid: e2f428e06c2d84e48b6ee614d4301805, type: 2}
   m_maxHealth: {fileID: 11400000, guid: 6077d054f1dbf493dae56d90ad66738c, type: 2}
-  m_oponentHealth: {fileID: 11400000, guid: a8a179ccab92e4a09991bb3b9732be2e, type: 2}
+  m_oponent: {fileID: 1952933645}
 --- !u!1 &1420103146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_health: {fileID: 11400000, guid: a8a179ccab92e4a09991bb3b9732be2e, type: 2}
   m_maxHealth: {fileID: 11400000, guid: 30ccf1560ac2f4652825fc4030bbaf7d, type: 2}
-  m_oponentHealth: {fileID: 11400000, guid: e2f428e06c2d84e48b6ee614d4301805, type: 2}
+  m_oponent: {fileID: 1416759964}
 --- !u!1001 &2138851392
 PrefabInstance:
   m_ObjectHideFlags: 0
