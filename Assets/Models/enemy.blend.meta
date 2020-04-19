@@ -24,7 +24,37 @@ ModelImporter:
   - first:
       74: -1304387373167265313
     second: Hit
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Armor
+    second: {fileID: 2100000, guid: ccca190203655415eac081a26ce650e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: 0f72083ce35fd4f04844ad4c0335bdfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 9a6d4d3f9cfcf47339a1178195b35cf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Horns
+    second: {fileID: 2100000, guid: e5c72c00d0b2040f59c96d2b2b08dfbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Joints
+    second: {fileID: 2100000, guid: 5eeb29be9211e407f98fd8ae9cc74267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Weapon
+    second: {fileID: 2100000, guid: 57575699444cd4f80ac0456586964c93, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
