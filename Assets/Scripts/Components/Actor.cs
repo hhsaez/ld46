@@ -33,6 +33,8 @@ namespace ld46.Components {
         [ SerializeField ] protected bool m_canParry;
 
         private Animator m_animator;
+        
+        public bool CanBeParried { get; set; } = false;
 
         void Start()
         {
@@ -61,23 +63,29 @@ namespace ld46.Components {
             }
         }
 
+        public bool TriggerAutoBlock()
+        {
+            if ( m_canAutoblock ) {
+                m_animator.SetTrigger( "isBlocking" );
+                return true;
+            }
+            return false;
+        }
+
         public void OnHit( float damage )
         {
             Stance stance = GetStance();
-            if ( m_canAutoblock && stance == Stance.IDLE ) {
-                m_animator.SetTrigger( "isBlocking" );
+            if ( stance == Stance.IDLE && TriggerAutoBlock() ) {
                 return;
             }
 
+            CanBeParried = false;
             m_health.Value -= damage;
         }
 
         public void Attack( AttackInfo attack )
         {
-            Debug.Log("Direction " + attack.Direction + " damage " + attack.Damage);
-
             Stance oponentStance = m_oponent.GetStance();
-            Debug.Log( "Oponent: " + oponentStance );
 
             if ( oponentStance == Stance.DEAD ) {
                 Debug.Log("Target is dead");
@@ -89,18 +97,36 @@ namespace ld46.Components {
                 Debug.Log("Blocking. No damage");
                 return;
             }
+
+            if ( oponentStance == Stance.ATTACKING && m_canParry ) {
+                if ( m_oponent.CanBeParried ) {
+                    m_oponent.OnHit( attack.Damage );
+                    return;
+                }
+                else if ( m_oponent.TriggerAutoBlock() ) {
+                    return;
+                }
+            }
+
+            if ( oponentStance == Stance.ATTACKING && ( !m_canParry || !m_oponent.CanBeParried ) ) {
+                Debug.Log("Attacking. No damage");
+                return;
+            }
             
             if ( attack.Direction == AttackDirection.LEFT && oponentStance == Stance.DODGING_RIGHT ) {
+                this.CanBeParried = true;
                 Debug.Log("No damage");
                 return;
             }
 
             if ( attack.Direction == AttackDirection.RIGHT && oponentStance == Stance.DODGING_LEFT ) {
+                this.CanBeParried = true;
                 Debug.Log("No damage");
                 return;
             }
 
             if ( attack.Direction == AttackDirection.TOP && oponentStance != Stance.IDLE ) {
+                this.CanBeParried = true;
                 Debug.Log("No damage");
                 return;
             }
@@ -130,6 +156,11 @@ namespace ld46.Components {
                 return Stance.HIT;
             }
             return Stance.IDLE;
+        }
+
+        public void OpenForAttack( int open )
+        {
+            this.CanBeParried = ( open == 1 );
         }
 
     }

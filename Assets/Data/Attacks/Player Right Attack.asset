@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d405e6c0d2c094394aa749a7987e3637, type: 3}
   m_Name: Player Right Attack
   m_EditorClassIdentifier: 
-  m_damage: 10
+  m_damage: 5
   m_direction: 2
