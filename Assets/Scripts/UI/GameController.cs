@@ -10,10 +10,31 @@ namespace ld46.UI {
         [ SerializeField ] protected FloatValue m_playerHealth;
         [ SerializeField ] protected FloatValue m_enemyHealth;
         [ SerializeField ] protected FadeInOut m_fadeInOut;
+        [ SerializeField ] protected GameObject m_pauseUI;
 
         private void Start()
         {
             m_fadeInOut.FadeIn();
+            PauseGame();
+        }
+
+        private void Update()
+        {
+            if ( Input.GetKeyDown( KeyCode.Escape ) ) {
+                PauseGame();
+            }
+        }
+
+        public void PauseGame()
+        {
+            Time.timeScale = 0;
+            m_pauseUI.gameObject.SetActive( true );
+        }
+
+        public void ResumeGame()
+        {
+            m_pauseUI.gameObject.SetActive( false );
+            Time.timeScale = 1;
         }
 
         private void OnEnable() 

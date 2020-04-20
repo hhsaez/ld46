@@ -28,7 +28,7 @@ namespace ld46.Components {
             }
 
             if ( m_animator.GetCurrentAnimatorStateInfo( 0 ).IsName( "Idle" ) ) {
-                if ( Input.GetButton( "Fire1" ) ) {
+                if ( Input.GetButton( "Fire1" ) || Input.GetAxis( "Vertical" ) > 0 ) {
                     m_animator.SetTrigger( "isAttacking" );
                     return;
                 }
@@ -36,7 +36,7 @@ namespace ld46.Components {
 
             m_animator.SetBool( "isDodgingLeft", Input.GetAxis( "Horizontal" ) < 0 );
             m_animator.SetBool( "isDodgingRight", Input.GetAxis( "Horizontal" ) > 0 );
-            m_animator.SetBool( "isBlocking", Input.GetButton( "Fire2" ) );
+            m_animator.SetBool( "isBlocking", Input.GetButton( "Fire2" ) || Input.GetAxis( "Vertical" ) < 0 );
         }
 
     }

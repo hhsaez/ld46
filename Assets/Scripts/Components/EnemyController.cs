@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ld46.Data;
 
 namespace ld46.Components {
 
     public class EnemyController : MonoBehaviour
     {
+        [ SerializeField ] protected FloatValue m_health;
+        [ SerializeField ] protected FloatValue m_maxHealth;
+
         private Actor m_actor;
         private Animator m_animator;
         private List< string > m_attacks = new List< string >();
@@ -31,6 +35,7 @@ namespace ld46.Components {
             }
 
             m_actionTimer += Time.deltaTime;
+
             if ( m_actionTimer >= 3.0f ) {
                 if ( m_attackQueue.Count == 0 ) {
                     m_attackQueue = new List< string >( m_attacks.Randomize() );
@@ -39,6 +44,7 @@ namespace ld46.Components {
                 string nextAttack = m_attackQueue[ 0 ];
                 m_attackQueue.RemoveAt( 0 );
                 m_animator.SetTrigger( nextAttack );
+                m_animator.speed = 2.0f - (m_health.Value / m_maxHealth.Value);
                 m_actionTimer = 0.0f;
             }
         }
